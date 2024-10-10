@@ -1,0 +1,43 @@
+<form [formGroup]="zodiacForm" (ngSubmit)="onSubmit()" class="max-w-sm mx-auto">
+    <div class="mb-5">
+      <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+      <input formControlName="firstName" id="firstName" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700" placeholder="Ingresa tu nombre" required />
+    </div>
+    
+    <div class="mb-5">
+      <label for="lastNamePaterno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Paterno</label>
+      <input formControlName="lastNamePaterno" id="lastNamePaterno" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700" placeholder="Ingresa tu apellido paterno" required />
+    </div>
+    
+    <div class="mb-5">
+      <label for="lastNameMaterno" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Materno</label>
+      <input formControlName="lastNameMaterno" id="lastNameMaterno" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700" placeholder="Ingresa tu apellido materno" required />
+    </div>
+  
+    <div class="mb-5">
+      <label for="birthDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de Nacimiento</label>
+      <input formControlName="birthDate" id="birthDate" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700" required />
+    </div>
+  
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Género</label>
+      <div>
+        <input type="radio" id="male" formControlName="gender" value="male" class="mr-2" required />
+        <label for="male" class="mr-4">Masculino</label>
+        <input type="radio" id="female" formControlName="gender" value="female" class="mr-2" required />
+        <label for="female">Femenino</label>
+      </div>
+    </div>
+  
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Calcular</button>
+  </form>
+  
+  <!-- Resultado -->
+  <div *ngIf="fullName" class="result mt-10">
+    <h2 class="text-xl font-bold">Resultado</h2>
+    <p>Nombre completo: {{ fullName }}</p>
+    <p>Edad: {{ age }} años</p>
+    <p>Horóscopo Chino: {{ chineseZodiac }}</p>
+    <img *ngIf="zodiacImage" [src]="zodiacImage" alt="{{ chineseZodiac }}" class="zodiac-image mt-5"/>
+  </div>
+  

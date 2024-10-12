@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-zodiaco',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './zodiaco.component.html',
   styleUrls: ['./zodiaco.component.css']
 })
@@ -15,11 +16,20 @@ export class ZodiacoComponent implements OnInit {
   chineseZodiac: string = '';
   zodiacImage: string = '';
 
+  // Lista de signos zodiacales chinos con sus imágenes correspondientes
   zodiacSigns = [
-    { name: 'Rat', image: 'path-to-rat-image' },
-    { name: 'Ox', image: 'path-to-ox-image' },
-    { name: 'Tiger', image: 'path-to-tiger-image' },
-    // Añade los signos restantes con sus respectivas imágenes
+    { name: 'Mono', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Mono-768x657-1.jpg' }, // Año % 12 == 0
+    { name: 'Gallo', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Gallo-768x657-1.jpg' }, // Año % 12 == 1
+    { name: 'Perro', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Perro-768x657-1.jpg' }, // Año % 12 == 2
+    { name: 'Cerdo', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Cerdo-768x657-1.jpg' }, // Año % 12 == 3
+    { name: 'Rata', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Rata-768x657-1.jpg' }, // Año % 12 == 4
+    { name: 'Buey', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Buey-768x657-1.jpg' }, // Año % 12 == 5
+    { name: 'Tigre', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Tigre-768x657-1.jpg' }, // Año % 12 == 6
+    { name: 'Conejo', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Conejo-768x657-1.jpg' }, // Año % 12 == 7
+    { name: 'Dragon', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Dragon-768x657-1.jpg' }, // Año % 12 == 8
+    { name: 'Serpiente', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Serpiente-768x657-1.jpg' }, // Año % 12 == 9
+    { name: 'Caballo', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Caballo-768x657-1.jpg' }, // Año % 12 == 10
+    { name: 'Cabra', image: 'https://ccl.uanl.mx/wp-content/uploads/2023/10/06_horoscopo_chino_Cabra-768x657-1.jpg' } // Año % 12 == 11
   ];
 
   constructor(private fb: FormBuilder) {}
@@ -30,7 +40,7 @@ export class ZodiacoComponent implements OnInit {
       lastNamePaterno: ['', Validators.required],
       lastNameMaterno: ['', Validators.required],
       birthDate: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: ['', Validators.required]
     });
   }
 

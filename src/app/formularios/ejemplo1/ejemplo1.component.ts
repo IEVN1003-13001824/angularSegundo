@@ -18,7 +18,7 @@ export default class Ejemplo1Component implements OnInit{
  
   formGroup!: FormGroup;
  
-  nombre:string='lalonganiza'
+  nombre:string='daneila'
  
   persona:Usuario={
     nombre:'',
@@ -48,8 +48,7 @@ export default class Ejemplo1Component implements OnInit{
  
     let personaJSON=JSON.stringify(this.persona);
     localStorage.setItem('persona', personaJSON);
-    //console.log(this.persona)
- 
+    console.log(this.persona)
   }
 subImprime():void{
   const personaGuardada=localStorage.getItem('persona');
@@ -58,6 +57,4 @@ subImprime():void{
     this.persona=persona;
   }
 }
-
-
 }

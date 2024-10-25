@@ -1,0 +1,29 @@
+<div class="max-w-lg mx-auto mt-10">
+    <h1 class="text-xl font-bold mb-5">Registro de Horas Trabajadas</h1>
+    <form (ngSubmit)="agregarEmpleado()" class="space-y-4">
+    <input type="text" [(ngModel)]="empleado.matricula" name="matricula" placeholder="Matrícula" required class="border p-2 w-full" />
+    <input type="text" [(ngModel)]="empleado.nombre" name="nombre" placeholder="Nombre" required class="border p-2 w-full" />
+    <input type="email" [(ngModel)]="empleado.correo" name="correo" placeholder="Correo" required class="border p-2 w-full" />
+    <input type="number" [(ngModel)]="empleado.edad" name="edad" placeholder="Edad" required class="border p-2 w-full" />
+    <input type="number" [(ngModel)]="empleado.horasTrabajadas" name="horas" placeholder="Horas Trabajadas" required class="border p-2 w-full" />
+    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Agregar Empleado</button>
+    </form>
+     
+      <h2 class="text-lg font-bold mt-5">Empleados Registrados</h2>
+    <table class="min-w-full mt-3 border">
+    <thead>
+    <tr>
+    <th class="border px-4 py-2">Matrícula</th>
+    <th class="border px-4 py-2">Nombre</th>
+    <th class="border px-4 py-2">Pago</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let emp of empleados">
+    <td class="border px-4 py-2">{{ emp.matricula }}</td>
+    <td class="border px-4 py-2">{{ emp.nombre }}</td>
+    <td class="border px-4 py-2">{{ calcularPago(emp.horasTrabajadas) }} pesos</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>

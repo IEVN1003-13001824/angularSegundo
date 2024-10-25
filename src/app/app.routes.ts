@@ -1,13 +1,12 @@
 import { Routes } from '@angular/router';
- 
-export const routes: Routes = [
-    {
-    path: 'auth',
-    loadChildren: () => import('./auth/features/auth.routes')
-    },
 
-    {
-        path: 'formularios',
-        loadChildren: () => import('./formularios/auth.routes')
-        }
-];
+export const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/features/auth.routes'),
+  },
+  {
+    path: 'formularios',
+    loadChildren: () => import('./formularios/resistencias.routes')
+  }
+] as Routes

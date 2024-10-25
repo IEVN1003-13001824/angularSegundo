@@ -1,0 +1,72 @@
+<div class="container mx-auto p-4">
+  <h2 class="text-lg font-bold mb-4">Resistencias</h2>
+
+  <form [formGroup]="resistenciaForm" class="space-y-4">
+    <div class="grid grid-cols-4 gap-4">
+      <div>
+        <label class="block font-semibold">Primera Banda</label>
+        <select formControlName="PrimeraBanda" class="border rounded-md p-2 w-full">
+          <option *ngFor="let color of valorColores | keyvalue" [value]="color.key">{{ color.key }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Segunda Banda</label>
+        <select formControlName="SegundaBanda" class="border rounded-md p-2 w-full">
+          <option *ngFor="let color of valorColores | keyvalue" [value]="color.key">{{ color.key }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Tercer Banda</label>
+        <select formControlName="TercerBanda" class="border rounded-md p-2 w-full">
+          <option *ngFor="let color of multValores | keyvalue" [value]="color.key">{{ color.key }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Tolerancia</label>
+        <div class="space-x-2">
+          <label>
+            <input type="radio" formControlName="Tolerancia" value="Oro" /> Oro
+          </label>
+          <label>
+            <input type="radio" formControlName="Tolerancia" value="Plata" /> Plata
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex space-x-4">
+      <button type="button" (click)="calcular()" class="bg-blue-500 text-white p-2 rounded-md">Guardar</button>
+      <button type="button" (click)="imprimir()" class="bg-green-500 text-white p-2 rounded-md">Imprimir</button>
+      <button type="button" (click)="limpiar()" class="bg-red-500 text-white p-2 rounded-md">Limpiar</button>
+    </div>
+  </form>
+
+  <h3 class="text-lg font-bold mt-4">Resultados Guardados:</h3>
+  <table class="table-auto w-full mt-2">
+    <thead>
+      <tr>
+        <th class="border px-4 py-2">Primera Banda</th>
+        <th class="border px-4 py-2">Segunda Banda</th>
+        <th class="border px-4 py-2">Tercer Banda</th>
+        <th class="border px-4 py-2">Tolerancia</th>
+        <th class="border px-4 py-2">Valor</th>
+        <th class="border px-4 py-2">Min</th>
+        <th class="border px-4 py-2">Max</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of resistencias">
+        <td class="border px-4 py-2" [ngStyle]="{'background-color': getColor(res.primeraBanda)}">{{ res.primeraBanda }}</td>
+        <td class="border px-4 py-2" [ngStyle]="{'background-color': getColor(res.segundaBanda)}">{{ res.segundaBanda }}</td>
+        <td class="border px-4 py-2" [ngStyle]="{'background-color': getColor(res.tercerBanda)}">{{ res.tercerBanda }}</td>
+        <td class="border px-4 py-2" [ngStyle]="{'background-color': getColor(res.tolerancia)}">{{ res.tolerancia }}</td>
+        <td class="border px-4 py-2">{{ res.valor }}</td>
+        <td class="border px-4 py-2">{{ res.min }}</td>
+        <td class="border px-4 py-2">{{ res.max }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
